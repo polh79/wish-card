@@ -1,0 +1,108 @@
+html, body {
+  height: 100%; }
+
+body {
+  overflow: hidden;
+  margin: 0;
+  background-color: #ececec; }
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(img/bg.png);
+  background-repeat: repeat;
+  background-size: 6%;
+  opacity: .3; }
+
+.cards {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
+.card {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  -webkit-perspective: 700;
+          perspective: 700;
+  cursor: pointer;
+  background-image: url(img/back.svg);
+  background-repeat: no-repeat;
+  background-size: auto calc(100% + 35px);
+  background-position: center top; }
+  .card:hover .face {
+    transition: all 0.3s ease-out; }
+  .card:hover .left {
+    -webkit-transform: rotateY(-35deg);
+            transform: rotateY(-35deg); }
+  .card:hover .right {
+    -webkit-transform: rotateY(35deg);
+            transform: rotateY(35deg); }
+  .card:active .face:after {
+    transition: .1s;
+    opacity: 1; }
+  .card:active .left {
+    -webkit-transform: rotateY(-165deg);
+            transform: rotateY(-165deg); }
+  .card:active .right {
+    -webkit-transform: rotateY(165deg);
+            transform: rotateY(165deg); }
+
+.face {
+  position: absolute;
+  top: 0;
+  width: calc(50% + 1px);
+  height: calc(100% + 1px);
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+  transition: all 0.5s ease-out;
+  z-index: 2;
+  background-image: url(img/front.svg);
+  background-repeat: no-repeat;
+  background-size: auto 100%; }
+  .face:after {
+    content: '';
+    display: block;
+    width: calc(100% + 1px);
+    height: calc(100% - 1px);
+    background-image: url(img/back.svg);
+    background-size: auto calc( 100% + 35px);
+    opacity: 0;
+    transition: .3s;
+    -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+            transform: scaleX(-1);
+    -webkit-filter: FlipH;
+            filter: FlipH; }
+
+.left {
+  left: 0;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0; }
+  .left:after {
+    background-position: left -13px; }
+
+.right {
+  right: 0;
+  -webkit-transform-origin: right 0;
+      -ms-transform-origin: right 0;
+          transform-origin: right 0;
+  background-position: right top; }
+  .right:after {
+    background-position: 324px  top; }
+
+.back {
+  background: #9dcc78;
+  z-index: 1; }
