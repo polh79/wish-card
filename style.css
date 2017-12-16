@@ -102,85 +102,13 @@ body {
     -webkit-filter: FlipH;
             filter: FlipH; }
 
-@-webkit-keyframes openGateLeft {
-  0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); }
-  20% {
-    -webkit-transform: rotateY(-25deg);
-            transform: rotateY(-25deg); }
-  30% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); }
-  38% {
-    -webkit-transform: rotateY(-25deg);
-            transform: rotateY(-25deg); }
-  46% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); }
-  100% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); } }
-
-@keyframes openGateLeft {
-  0% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); }
-  20% {
-    -webkit-transform: rotateY(-25deg);
-            transform: rotateY(-25deg); }
-  30% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); }
-  38% {
-    -webkit-transform: rotateY(-25deg);
-            transform: rotateY(-25deg); }
-  46% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); }
-  100% {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg); } }
-
 .left {
   left: 0;
   -webkit-transform-origin: 0 0;
       -ms-transform-origin: 0 0;
-          transform-origin: 0 0;
-  -webkit-animation-name: openGateLeft;
-          animation-name: openGateLeft;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s; }
+          transform-origin: 0 0; }
   .left:after {
     background-position: left -13px; }
-
-@-webkit-keyframes openGateRight {
-  0% {
-    opacity: 0; }
-  1% {
-    opacity: 1; }
-  20% {
-    opacity: 1; }
-  21% {
-    opacity: 0; }
-  100% {
-    opacity: 0; } }
-
-@keyframes openGateRight {
-  0% {
-    opacity: 0; }
-  1% {
-    opacity: 1; }
-  20% {
-    opacity: 1; }
-  21% {
-    opacity: 0; }
-  100% {
-    opacity: 0; } }
 
 .right {
   right: 0;
