@@ -9,66 +9,43 @@ html, body{
 body{
     overflow: hidden;
     margin: 0;
-    background-color: #f5f5f5;
+    //background-color: #f5f5f5;
     position: relative;
 }
 .bg{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(img/bg.png);
+    background-image: url(img/bande1.png);
     background-repeat: repeat;
-    background-size: 200px;
-    opacity: .3; 
+    background-size: 40px;
 }
-$y_start : 193px;
-$x_start : -10px;
-
-$x_v : 6px;
-$x_d : 2px;
-$y_h : 10px;
-
-
-@keyframes dotAnim {
-    0% {
-        top: $x_start;
-        left: $y_start;
-    }
-    2% { 
-        top: 200px;
-        transition-timing-function: cubic-bezier(.17,.67,.93,.17) ;
-    }
-    
-}
-.bg-dot1{
+.light{
+    z-index: -1;
     position: absolute;
-    left: $y_start;
-    top: $x_start;
-    width: 14px;
-    height: 14px;
-    border-radius: (50%);
-    background-color: #ec721f;
-    //box-shadow: 0 -3px 12px 5px #f8ab37;
-
-    animation-name: dotAnim;
-    animation-iteration-count: infinite;
-    animation-duration: 100s;
-    animation-delay: 0s;
+    background-color: #e76729; 
 }
-@keyframes fade{
-0%{ opacity: 1;}
-99%{ opacity: 0;}
-100%{ opacity: 1;}
+@keyframes light1{
+from{ top: 0;}
+to{ top: 110vh;}
 }
-.arc1{
-    position: absolute;
-    left: 100px;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    background-image: url(img/bg-arc1.png);
-    background-repeat: repeat-y;
-    //animation: fade 2s ease-out infinite;
+.l-1{
+    width: 20px;
+    height: 180px;
+    left: 180px;
+    top: -8px;
+    animation: light1 3s ease-out infinite;
+}
+@keyframes light-2{
+from{ left: -200px;}
+to{ left: 110vw;}
+}
+.l-2{
+    width: 180px;
+    height: 13px;
+    left: -200px;
+    top: 113px;
+    animation: light2 3s ease-out infinite;
 }
 .cards {
     position: relative;
@@ -80,6 +57,7 @@ $y_h : 10px;
     margin: 0;
 }
 .card {
+    
     width: 600px;
     height: 400px;
     position: relative;
@@ -96,6 +74,7 @@ $y_h : 10px;
         .left { transform: rotateY(-35deg); }
         .right { transform: rotateY(35deg); }
     }
+    /* Click maintenu
     &:active {
         .face:after {
             transition: .1s ease-out;
@@ -104,6 +83,20 @@ $y_h : 10px;
         .left {transform: rotateY(-165deg); }
         .right { transform: rotateY(+165deg); }
     }
+    */
+}
+.active{
+     &:hover {
+        .face { transition: all 0.3s ease-out; }
+        .left {transform: rotateY(-165deg); }
+        .right { transform: rotateY(+165deg); }
+    }
+    .face:after {
+        transition: .1s ease-out;
+        opacity: 1;
+    }
+    .left {transform: rotateY(-165deg); }
+    .right { transform: rotateY(+165deg); }
 }
 .face {
     position: absolute;
@@ -112,7 +105,7 @@ $y_h : 10px;
     height: calc(100% + 1px);
     backface-visibility: visible; 
     transition: all 0.5s ease-out;
-    z-index: 2;
+    z-index: 200;
     background-image: url(img/front.jpg);
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -124,7 +117,7 @@ $y_h : 10px;
         background-image: url(img/back.jpg);
         background-size: auto calc( 100% + 35px );
         opacity: 0;
-        transition: .5s ease-out;
+        transition: .3s ease-out;
         transform: scaleX(-1);
         filter: FlipH;
     }
@@ -174,7 +167,7 @@ p{
     opacity: 0;
     animation-name: fadeP;
     animation-iteration-count: infinite;
-    animation-duration: 20s;
+    animation-duration: 24s;
 }
 .fr{ 
     animation-delay: 1s;
@@ -183,8 +176,13 @@ p{
     animation-delay: 6s;
 }
 .sp{
-    animation-delay: 12s;
+    animation-delay: 11s;
 }
 .champ{
-    animation-delay: 18s;
+    top: 0;
+    height: 100%;
+    background-image: url(img/champ.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    animation-delay: 17s;
 }
