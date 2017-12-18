@@ -6,21 +6,14 @@
   font-weight: normal;
   font-style: normal; }
 
-/*
-$raleway-regular: 'raleway-regular';
-@include font-face($raleway-regular, 'font/raleway-regular/', 'raleway-regular', 'raleway-regular');
-
-$raleway-bold: 'raleway-bold';
-@include font-face($raleway-bold, 'font/raleway-bold/', 'raleway-bold', 'raleway-bold');
-*/
-/* fin font face */
 html, body {
   height: 100%; }
 
 body {
   overflow: hidden;
   margin: 0;
-  background-color: #ececec; }
+  background-color: #f5f5f5;
+  position: relative; }
 
 .bg {
   position: absolute;
@@ -28,8 +21,66 @@ body {
   height: 100%;
   background-image: url(img/bg.png);
   background-repeat: repeat;
-  background-size: 6%;
+  background-size: 200px;
   opacity: .3; }
+
+@-webkit-keyframes dotAnim {
+  0% {
+    top: -10px;
+    left: 193px; }
+  2% {
+    top: 200px;
+    transition-timing-function: cubic-bezier(0.17, 0.67, 0.93, 0.17); } }
+
+@keyframes dotAnim {
+  0% {
+    top: -10px;
+    left: 193px; }
+  2% {
+    top: 200px;
+    transition-timing-function: cubic-bezier(0.17, 0.67, 0.93, 0.17); } }
+
+.bg-dot1 {
+  position: absolute;
+  left: 193px;
+  top: -10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ec721f;
+  -webkit-animation-name: dotAnim;
+          animation-name: dotAnim;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-duration: 100s;
+          animation-duration: 100s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s; }
+
+@-webkit-keyframes fade {
+  0% {
+    opacity: 1; }
+  99% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fade {
+  0% {
+    opacity: 1; }
+  99% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+.arc1 {
+  position: absolute;
+  left: 100px;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background-image: url(img/bg-arc1.png);
+  background-repeat: repeat-y; }
 
 .cards {
   position: relative;
@@ -53,7 +104,7 @@ body {
   -webkit-perspective: 700;
           perspective: 700;
   cursor: pointer;
-  background-image: url(img/back.svg);
+  background-image: url(img/back.jpg);
   background-repeat: no-repeat;
   background-size: auto calc(100% + 35px);
   background-position: center top; }
@@ -66,7 +117,7 @@ body {
     -webkit-transform: rotateY(35deg);
             transform: rotateY(35deg); }
   .card:active .face:after {
-    transition: .1s;
+    transition: .1s ease-out;
     opacity: 1; }
   .card:active .left {
     -webkit-transform: rotateY(-165deg);
@@ -84,7 +135,7 @@ body {
           backface-visibility: visible;
   transition: all 0.5s ease-out;
   z-index: 2;
-  background-image: url(img/front.svg);
+  background-image: url(img/front.jpg);
   background-repeat: no-repeat;
   background-size: auto 100%; }
   .face:after {
@@ -92,10 +143,10 @@ body {
     display: block;
     width: calc(100% + 1px);
     height: calc(100% - 1px);
-    background-image: url(img/back.svg);
+    background-image: url(img/back.jpg);
     background-size: auto calc( 100% + 35px);
     opacity: 0;
-    transition: .3s;
+    transition: .5s ease-out;
     -webkit-transform: scaleX(-1);
         -ms-transform: scaleX(-1);
             transform: scaleX(-1);
@@ -175,9 +226,13 @@ p {
           animation-delay: 1s; }
 
 .en {
-  -webkit-animation-delay: 7s;
-          animation-delay: 7s; }
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s; }
 
 .sp {
-  -webkit-animation-delay: 14s;
-          animation-delay: 14s; }
+  -webkit-animation-delay: 12s;
+          animation-delay: 12s; }
+
+.champ {
+  -webkit-animation-delay: 18s;
+          animation-delay: 18s; }
