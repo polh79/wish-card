@@ -36,7 +36,7 @@ to{ top: 110vh;}
     top: -8px;
     animation: light1 3s ease-out infinite;
 }
-@keyframes light-2{
+@keyframes light2{
 from{ left: -200px;}
 to{ left: 110vw;}
 }
@@ -121,7 +121,6 @@ to{ left: 110vw;}
         transform: scaleX(-1);
         filter: FlipH;
     }
-
 }
 .left{
     left: 0;

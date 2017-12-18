@@ -47,13 +47,13 @@ body {
   -webkit-animation: light1 3s ease-out infinite;
           animation: light1 3s ease-out infinite; }
 
-@-webkit-keyframes light-2 {
+@-webkit-keyframes light2 {
   from {
     left: -200px; }
   to {
     left: 110vw; } }
 
-@keyframes light-2 {
+@keyframes light2 {
   from {
     left: -200px; }
   to {
