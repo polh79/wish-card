@@ -12,60 +12,58 @@ html, body {
 body {
   overflow: hidden;
   margin: 0;
+  background-color: #12253e;
   position: relative; }
 
-.bg {
-  position: absolute;
-  width: 100%;
+@-webkit-keyframes star {
+  0% {
+    top: 0;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); }
+  20% {
+    left: 10%; }
+  30% {
+    left: 100%; }
+  40% {
+    left: 10%; }
+  70% {
+    opacity: 0; }
+  100% {
+    top: 110vh; } }
+
+@keyframes star {
+  0% {
+    top: 0;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); }
+  20% {
+    left: 10%; }
+  30% {
+    left: 100%; }
+  40% {
+    left: 10%; }
+  70% {
+    opacity: 0; }
+  100% {
+    top: 110vh; } }
+
+.star-container {
+  position: relative;
   height: 100%;
-  background-image: url(img/bande1.png);
-  background-repeat: repeat;
-  background-size: 40px; }
+  width: 30px; }
 
-.light {
-  z-index: -1;
+.star {
   position: absolute;
-  background-color: #e76729; }
-
-@-webkit-keyframes light1 {
-  from {
-    top: 0; }
-  to {
-    top: 110vh; } }
-
-@keyframes light1 {
-  from {
-    top: 0; }
-  to {
-    top: 110vh; } }
-
-.l-1 {
-  width: 20px;
-  height: 180px;
-  left: 180px;
-  top: -8px;
-  -webkit-animation: light1 3s ease-out infinite;
-          animation: light1 3s ease-out infinite; }
-
-@-webkit-keyframes light2 {
-  from {
-    left: -200px; }
-  to {
-    left: 110vw; } }
-
-@keyframes light2 {
-  from {
-    left: -200px; }
-  to {
-    left: 110vw; } }
-
-.l-2 {
-  width: 180px;
-  height: 13px;
-  left: -200px;
-  top: 113px;
-  -webkit-animation: light2 3s ease-out infinite;
-          animation: light2 3s ease-out infinite; }
+  top: -10px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  background-image: url(img/star.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  -webkit-animation: star 10s ease-out infinite;
+          animation: star 10s ease-out infinite; }
 
 .cards {
   position: relative;
@@ -89,20 +87,7 @@ body {
   -webkit-perspective: 700;
           perspective: 700;
   cursor: pointer;
-  background-image: url(img/back.jpg);
-  background-repeat: no-repeat;
-  background-size: auto calc(100% + 35px);
-  background-position: center top;
-  /* Click maintenu
-    &:active {
-        .face:after {
-            transition: .1s ease-out;
-            opacity: 1;
-        }
-        .left {transform: rotateY(-165deg); }
-        .right { transform: rotateY(+165deg); }
-    }
-    */ }
+  box-shadow: 0px 0px 45px 10px rgba(255, 255, 255, 0.3); }
   .card:hover .face {
     transition: all 0.3s ease-out; }
   .card:hover .left {
@@ -111,6 +96,49 @@ body {
   .card:hover .right {
     -webkit-transform: rotateY(35deg);
             transform: rotateY(35deg); }
+
+.face {
+  position: absolute;
+  top: 0;
+  width: calc(50% + 1px);
+  height: 100%;
+  -webkit-backface-visibility: visible;
+          backface-visibility: visible;
+  transition: all 0.5s ease-out;
+  background-image: url(img/front.jpg);
+  background-repeat: no-repeat;
+  background-size: auto 100%; }
+  .face:after {
+    content: '';
+    display: block;
+    width: calc(100% + 1px);
+    height: 100%;
+    background-image: url(img/back.jpg);
+    background-size: auto calc( 100% + 35px);
+    opacity: 0;
+    transition: .3s ease-out;
+    -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+            transform: scaleX(-1);
+    -webkit-filter: FlipH;
+            filter: FlipH; }
+
+.left {
+  left: 1px;
+  -webkit-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+          transform-origin: 0 0; }
+  .left:after {
+    background-position: left -14px; }
+
+.right {
+  right: 0;
+  -webkit-transform-origin: right 0;
+      -ms-transform-origin: right 0;
+          transform-origin: right 0;
+  background-position: right top; }
+  .right:after {
+    background-position: 324px  top; }
 
 .active:hover .face {
   transition: all 0.3s ease-out; }
@@ -123,7 +151,13 @@ body {
   -webkit-transform: rotateY(165deg);
           transform: rotateY(165deg); }
 
+.active .face {
+  z-index: -1;
+  box-shadow: 0px 0px 45px 10px rgba(255, 255, 255, 0.3);
+  transition: .3s; }
+
 .active .face:after {
+  position: relative;
   transition: .1s ease-out;
   opacity: 1; }
 
@@ -134,54 +168,6 @@ body {
 .active .right {
   -webkit-transform: rotateY(165deg);
           transform: rotateY(165deg); }
-
-.face {
-  position: absolute;
-  top: 0;
-  width: calc(50% + 1px);
-  height: calc(100% + 1px);
-  -webkit-backface-visibility: visible;
-          backface-visibility: visible;
-  transition: all 0.5s ease-out;
-  z-index: 200;
-  background-image: url(img/front.jpg);
-  background-repeat: no-repeat;
-  background-size: auto 100%; }
-  .face:after {
-    content: '';
-    display: block;
-    width: calc(100% + 1px);
-    height: calc(100% - 1px);
-    background-image: url(img/back.jpg);
-    background-size: auto calc( 100% + 35px);
-    opacity: 0;
-    transition: .3s ease-out;
-    -webkit-transform: scaleX(-1);
-        -ms-transform: scaleX(-1);
-            transform: scaleX(-1);
-    -webkit-filter: FlipH;
-            filter: FlipH; }
-
-.left {
-  left: 0;
-  -webkit-transform-origin: 0 0;
-      -ms-transform-origin: 0 0;
-          transform-origin: 0 0; }
-  .left:after {
-    background-position: left -13px; }
-
-.right {
-  right: 0;
-  -webkit-transform-origin: right 0;
-      -ms-transform-origin: right 0;
-          transform-origin: right 0;
-  background-position: right top; }
-  .right:after {
-    background-position: 324px  top; }
-
-.back {
-  background: #9dcc78;
-  z-index: 1; }
 
 @-webkit-keyframes fadeP {
   0% {
@@ -209,7 +195,11 @@ body {
 
 .texte {
   height: 100%;
-  position: relative; }
+  position: relative;
+  background-image: url(img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: auto calc(100% + 35px);
+  background-position: center top; }
 
 p {
   position: absolute;
@@ -227,8 +217,8 @@ p {
           animation-name: fadeP;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  -webkit-animation-duration: 24s;
-          animation-duration: 24s; }
+  -webkit-animation-duration: 19s;
+          animation-duration: 19s; }
 
 .fr {
   -webkit-animation-delay: 1s;
@@ -241,12 +231,3 @@ p {
 .sp {
   -webkit-animation-delay: 11s;
           animation-delay: 11s; }
-
-.champ {
-  top: 0;
-  height: 100%;
-  background-image: url(img/champ.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-  -webkit-animation-delay: 17s;
-          animation-delay: 17s; }

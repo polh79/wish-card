@@ -9,43 +9,36 @@ html, body{
 body{
     overflow: hidden;
     margin: 0;
-    //background-color: #f5f5f5;
+    background-color: #12253e;
     position: relative;
 }
-.bg{
-    position: absolute;
-    width: 100%;
+@keyframes star{
+0% {
+    top: 0;
+    transform: rotate(360deg);
+}
+20% { left: 10%;}
+30% { left: 100%;}
+40% { left: 10%;}
+70% { opacity: 0;}
+100% { top: 110vh;}
+}
+.star-container{
+    position: relative;
     height: 100%;
-    background-image: url(img/bande1.png);
-    background-repeat: repeat;
-    background-size: 40px;
+    width: 30px;
 }
-.light{
-    z-index: -1;
+.star{
     position: absolute;
-    background-color: #e76729; 
-}
-@keyframes light1{
-from{ top: 0;}
-to{ top: 110vh;}
-}
-.l-1{
-    width: 20px;
-    height: 180px;
-    left: 180px;
-    top: -8px;
-    animation: light1 3s ease-out infinite;
-}
-@keyframes light2{
-from{ left: -200px;}
-to{ left: 110vw;}
-}
-.l-2{
-    width: 180px;
-    height: 13px;
-    left: -200px;
-    top: 113px;
-    animation: light2 3s ease-out infinite;
+    top: -10px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    background-image: url(img/star.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    animation: star 10s ease-out infinite;
 }
 .cards {
     position: relative;
@@ -57,55 +50,29 @@ to{ left: 110vw;}
     margin: 0;
 }
 .card {
-    
     width: 600px;
     height: 400px;
+
     position: relative;
+
     perspective: 700;
     cursor: pointer;
 
-    background-image: url(img/back.jpg);
-    background-repeat: no-repeat;
-    background-size: auto calc(100% + 35px);
-    background-position: center top;
+    box-shadow: 0px 0px 45px 10px rgba(255,255,255,.3);
 
     &:hover {
         .face { transition: all 0.3s ease-out; }
         .left { transform: rotateY(-35deg); }
         .right { transform: rotateY(35deg); }
     }
-    /* Click maintenu
-    &:active {
-        .face:after {
-            transition: .1s ease-out;
-            opacity: 1;
-        }
-        .left {transform: rotateY(-165deg); }
-        .right { transform: rotateY(+165deg); }
-    }
-    */
-}
-.active{
-     &:hover {
-        .face { transition: all 0.3s ease-out; }
-        .left {transform: rotateY(-165deg); }
-        .right { transform: rotateY(+165deg); }
-    }
-    .face:after {
-        transition: .1s ease-out;
-        opacity: 1;
-    }
-    .left {transform: rotateY(-165deg); }
-    .right { transform: rotateY(+165deg); }
 }
 .face {
     position: absolute;
     top: 0;
     width: calc(50% + 1px);
-    height: calc(100% + 1px);
+    height: 100%;
     backface-visibility: visible; 
     transition: all 0.5s ease-out;
-    z-index: 200;
     background-image: url(img/front.jpg);
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -113,7 +80,7 @@ to{ left: 110vw;}
         content:  '';
         display: block;
         width: calc(100% + 1px);
-        height: calc(100% - 1px);
+        height: 100% ;
         background-image: url(img/back.jpg);
         background-size: auto calc( 100% + 35px );
         opacity: 0;
@@ -123,10 +90,10 @@ to{ left: 110vw;}
     }
 }
 .left{
-    left: 0;
+    left: 1px;
     transform-origin: 0 0;
     &:after { 
-        background-position: left -13px;
+        background-position: left -14px;
     }
 }
 .right{
@@ -137,10 +104,30 @@ to{ left: 110vw;}
         background-position: 324px  top;
     }
 }
-.back {
-    background: #9dcc78;
-    z-index: 1;
+.active{
+     &:hover {
+        .face { transition: all 0.3s ease-out; }
+        .left {transform: rotateY(-165deg); }
+        .right { transform: rotateY(+165deg); }
+    }
+    .face{
+        z-index: -1;
+        box-shadow: 0px 0px 45px 10px rgba(255,255,255,.3);
+        transition: .3s;
+    }
+    .face:after {
+        position: relative;
+        transition: .1s ease-out;
+        opacity: 1;
+    }
+    .left {
+        transform: rotateY(-165deg);
+    }
+    .right { 
+        transform: rotateY(+165deg);
+    }
 }
+
 @keyframes fadeP {
     0%{ opacity: 0; }
     1%{ opacity: 1; }
@@ -151,6 +138,11 @@ to{ left: 110vw;}
 .texte{
     height: 100%;
     position: relative;
+
+    background-image: url(img/back.jpg);
+    background-repeat: no-repeat;
+    background-size: auto calc(100% + 35px);
+    background-position: center top;
 }
 p{
     position: absolute;
@@ -166,7 +158,7 @@ p{
     opacity: 0;
     animation-name: fadeP;
     animation-iteration-count: infinite;
-    animation-duration: 24s;
+    animation-duration: 19s;
 }
 .fr{ 
     animation-delay: 1s;
@@ -176,12 +168,4 @@ p{
 }
 .sp{
     animation-delay: 11s;
-}
-.champ{
-    top: 0;
-    height: 100%;
-    background-image: url(img/champ.png);
-    background-repeat: no-repeat;
-    background-position: center center;
-    animation-delay: 17s;
 }
