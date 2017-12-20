@@ -125,7 +125,7 @@ body{
     }
 }
 .left{
-    left: 1px;
+    left: 0;
     transform-origin: 0 0;
     &:after { 
         background-position: left -14px;
@@ -157,6 +157,7 @@ body{
     }
     .left {
         transform: rotateY(-165deg);
+        left: 1px;
     }
     .right { 
         transform: rotateY(+165deg);
