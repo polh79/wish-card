@@ -13,32 +13,67 @@ body{
     position: relative;
 }
 @keyframes star{
-0% {
-    top: 0;
-    transform: rotate(360deg);
-}
-20% { left: 10%;}
-30% { left: 100%;}
-40% { left: 10%;}
-70% { opacity: 0;}
-100% { top: 110vh;}
+    0% {
+        top: 0;
+        transform: rotate(360deg);
+    }
+    20% { left: 30%;}
+    50% { left: 80%;}
+    70% { opacity: 0;}
+    80% { left: 30%;}
+    100% { 
+        top: 100vh;
+        opacity: 0;
+    }
 }
 .star-container{
-    position: relative;
+    position: absolute;
     height: 100%;
     width: 30px;
+    .container{
+        position: relative;
+    }
 }
 .star{
     position: absolute;
-    top: -10px;
-    left: 15px;
+    top: -30px;
+    left: 100%;
     width: 30px;
     height: 30px;
     background-image: url(img/star.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;
-    animation: star 10s ease-out infinite;
+    //animation: star 10s ease-out infinite;
+    animation-name: star;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+
+}
+.un{
+    left: 30px;
+    .star {
+        animation-delay: 0s;
+    }
+}
+.deux{
+    right: 30px;
+    .star{
+        animation-delay: 1s;
+    } 
+}
+.trois{
+    left: 200px;
+    .star{
+        animation-delay: 3s;
+    }
+}
+.quatre{
+    right: 200px;
+    .star{
+        animation-delay: 2s;
+    }
 }
 .cards {
     position: relative;
