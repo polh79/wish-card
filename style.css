@@ -139,7 +139,7 @@ body {
   -webkit-backface-visibility: visible;
           backface-visibility: visible;
   transition: all 0.5s ease-out;
-  background-image: url(img/front.jpg);
+  background-image: url(img/front-min.jpg);
   background-repeat: no-repeat;
   background-size: auto 100%; }
   .face:after {
@@ -147,7 +147,7 @@ body {
     display: block;
     width: calc(100% + 1px);
     height: 100%;
-    background-image: url(img/back.jpg);
+    background-image: url(img/back-min.jpg);
     background-size: auto calc( 100% + 35px);
     opacity: 0;
     transition: .3s ease-out;
@@ -230,7 +230,7 @@ body {
 .texte {
   height: 100%;
   position: relative;
-  background-image: url(img/back.jpg);
+  background-image: url(img/back-min.jpg);
   background-repeat: no-repeat;
   background-size: auto calc(100% + 35px);
   background-position: center top; }
